@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  EmployeeDao.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.scau.dao.EmployeeDao">
+
+    <resultMap id="BaseResultMap" type="com.scau.entity.Employee">
+        <id column="e_id" property="e_id" />
+        <result column="e_name" jdbcType="VARCHAR" property="e_name" />
+    </resultMap>
+
+    <!-- 新增 -->
+    <insert id="insertEmployee" parameterType="Employee" useGeneratedKeys="true" keyProperty="e_id">
+        insert into employee(e_name,gender,tel,address,password,note,datetime)
+        values(#{e_name},#{gender},#{tel},#{address},#{password},#{note},#{datetime})
+    </insert>
+
+    <!-- 修改 -->
+    <update id="updateEmployee" parameterType="Employee" >
+        update employee set address=#{address} where e_id=#{e_id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee where e_id=#{e_id}
+    </delete>
+
+    <!-- 根据id查找单个用户 -->
+    <select id="findEmployeeById" parameterType="int" resultMap="BaseResultMap">
+        select * from employee where e_id= #{ e_id }
+    </select>
+
+    <!-- 根据name查找单个用户  -->
+    <select id="findEmployeeByName" parameterType="String" resultMap="BaseResultMap">
+        select * from employee where e_name = #{0}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from employee
+    </select>
+
+    <!-- 查询所有ByPage -->
+    <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
+        select
+        *
+        from employee
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+    <!-- 获取employee表格中的tuple中的个数 -->
+    <select id="getEmployeeNum" resultType="Integer">
+        select
+        count(*)
+        from employee
+    </select>
+</mapper>

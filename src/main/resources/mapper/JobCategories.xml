@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  EmployeeDao.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.scau.dao.JobCategoriesDao">
+
+    <resultMap id="BaseResultMap" type="com.scau.entity.JobCategories">
+        <id column="j_id" property="j_id" />
+    </resultMap>
+
+    <!-- 新增 -->
+    <insert id="insertJobCategories" parameterType="JobCategories" useGeneratedKeys="true" keyProperty="j_id">
+        insert into jobcategories(title,dept,base_wage,classn)
+        values(#{title},#{dept},#{base_wage},#{classn})
+    </insert>
+
+    <!-- 获取JobCategories所有部门 -->
+    <select id="findJobCategoriesDept" resultMap="BaseResultMap">
+        select
+        *
+        from jobcategories group by dept;
+    </select>
+</mapper>
