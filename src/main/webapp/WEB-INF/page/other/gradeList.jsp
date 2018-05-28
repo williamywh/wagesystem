@@ -20,7 +20,8 @@
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
 	        method: "post",
-	        url:"GradeServlet?method=GradeList&course=course&t="+new Date().getTime(),
+	        // url:"GradeServlet?method=GradeList&course=course&t="+new Date().getTime(),
+            url:"/WageInfo/salaryList",
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
 	        pagination: false,//分页控件 
@@ -31,21 +32,11 @@
 	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
  		        {field:'id',title:'ID',width:50, sortable: true},    
- 		        {field:'name',title:'名称',width:200},
- 		        {field:'courseList',title:'课程',width:650,
- 		        	formatter: function(value,row,index){
- 						if (row.courseList){
- 							var cl = "   |   ";
- 							var list = row.courseList;
- 							for(var i=0;i < list.length;i++){
- 								cl += list[i].name+"   |   ";
- 							}
- 							return cl;
- 						} else {
- 							return value;
- 						}
- 					}	
- 		        },
+ 		        {field:'name',title:'姓名',width:200},
+ 		        {field:'courseList',title:'月工资',width:100},
+				{field:'courseList',title:'部门',width:100},
+                {field:'courseList',title:'年份',width:100},
+                {field:'courseList',title:'月份',width:100}
 	 		]], 
 	        toolbar: "#toolbar"
 	    }); 
