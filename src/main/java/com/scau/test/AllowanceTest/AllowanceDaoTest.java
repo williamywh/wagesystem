@@ -16,20 +16,20 @@ public class AllowanceDaoTest extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private SalaryDao salaryDao;
+    private AllowanceDao allowanceDao;
 
     @Test
     public void findAllByPage() {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("start", 0);
         map.put("size", 2);
-        List<Salary> list = salaryDao.findAllByPage(map);
+        List<Allowance> list = allowanceDao.findAllByPage(map);
         System.out.println(list.size());
     }
 
     @Test
     public void findAll() {
-        List<Salary> employee = salaryDao.findAll();
+        List<Allowance> employee = allowanceDao.findAll();
         System.out.println(employee.size());
         System.out.println(employee.get(0).toString());
     }
