@@ -29,8 +29,8 @@ public class AllowanceDaoTest extends BaseTest {
 
     @Test
     public void findAll() {
-        List<Allowance> employee = allowanceDao.findAll();
-        System.out.println(employee.size());
-        System.out.println(employee.get(0).toString());
+        List<Allowance> list = allowanceDao.findAll();
+        System.out.println(list.size());
+        System.out.println(list.get(0).toString());
     }
 }

@@ -16,14 +16,14 @@
     <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
         select
         *
-        from salary
+        from allowance
         <if test="start!=null and size!=null">
             limit #{start},#{size}
         </if>
     </select>
 
     <select id="findAll" resultMap="BaseResultMap">
-        select * from salary
+        select * from allowance
     </select>
 
 

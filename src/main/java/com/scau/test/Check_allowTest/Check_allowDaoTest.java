@@ -16,20 +16,21 @@ public class Check_allowDaoTest extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private SalaryDao salaryDao;
+    private Check_allowDao check_allowDao;
 
     @Test
     public void findAllByPage() {
-        Map<String,Integer> map = new HashMap<String,Integer>();
-        map.put("start",0);
-        map.put("size",2);
-        List<Salary> list = salaryDao.findAllByPage(map);
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("start", 0);
+        map.put("size", 2);
+        List<Check_allow> list = check_allowDao.findAllByPage(map);
         System.out.println(list.size());
     }
+
     @Test
     public void findAll() {
-        List<Salary> employee = salaryDao.findAll();
-        System.out.println(employee.size());
-        System.out.println(employee.get(0).toString());
+        List<Check_allow> list = check_allowDao.findAll();
+        System.out.println(list.size());
+        System.out.println(list.get(0).toString());
     }
 }
