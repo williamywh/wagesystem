@@ -1,4 +1,7 @@
 package com.scau.test.CheckstatTest;
 
-public class CheckstatDaoTest {
+import com.scau.test.BaseTest;
+
+public class CheckstatDaoTest extends BaseTest {
+
 }
