@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace：必须与对应的接口全类名一致  EmployeeDao.java
+    id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
+ -->
+<mapper namespace="com.scau.dao.SalaryDao">
+
+    <resultMap id="BaseResultMap" type="com.scau.entity.Salary">
+        <id column="id" property="id" />
+        <result column="e_id" property="e_id" />
+        <result column="cs_id" property="cs_id" />
+        <result column="sum"  property="sum" />
+    </resultMap>
+
+
+    <!-- 查询所有ByPage -->
+    <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
+        select
+        *
+        from salary
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from salary
+    </select>
+
+
+</mapper>
