@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="../static/easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="../static/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="../static/easyui/js/validateExtends.js"></script>
+    <script type="text/javascript" src="../static/easyui/themes/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript">
 	$(function() {	
 		//datagrid初始化 
@@ -19,29 +20,39 @@
 	        border: true, 
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
-	        method: "post",
+	        method: "get",
 	        // url:"GradeServlet?method=GradeList&course=course&t="+new Date().getTime(),
             url:"/WageInfo/salaryList",
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
-	        pagination: false,//分页控件 
+	        pagination: true,//分页控件
 	        rownumbers: true,//行号 
 	        sortName:'id',
-	        sortOrder:'DESC', 
+	        sortOrder:'asc',
 	        remoteSort: false,
 	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
  		        {field:'id',title:'ID',width:50, sortable: true},    
  		        {field:'name',title:'姓名',width:200},
- 		        {field:'courseList',title:'月工资',width:100},
-				{field:'courseList',title:'部门',width:100},
-                {field:'courseList',title:'年份',width:100},
-                {field:'courseList',title:'月份',width:100}
+ 		        {field:'sum',title:'月工资',width:100},
+				{field:'dept',title:'部门',width:100},
+                {field:'year',title:'年份',width:100},
+                {field:'month',title:'月份',width:100}
 	 		]], 
 	        toolbar: "#toolbar"
-	    }); 
-	   
-	    //设置工具类按钮
+	    });
+
+        //设置分页控件
+        var p = $('#dataList').datagrid('getPager');
+        $(p).pagination({
+            pageSize: 10,//每页显示的记录条数，默认为10
+            pageList: [10,20,30,50,100],//可以设置每页记录条数的列表
+            beforePageText: '第',//页数文本框前显示的汉字
+            afterPageText: '页    共 {pages} 页',
+            displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录',
+        });
+
+        //设置工具类按钮
 	    $("#add").click(function(){
 	    	$("#addDialog").dialog("open");
 	    });
