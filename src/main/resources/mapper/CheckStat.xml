@@ -5,10 +5,10 @@
     namespace：必须与对应的接口全类名一致  EmployeeDao.java
     id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
  -->
-<mapper namespace="com.scau.dao.SalaryDao">
+<mapper namespace="com.scau.dao.CheckStatDao">
 
-    <resultMap id="BaseResultMap" type="com.scau.entity.Salary">
-        <id column="id" property="id" />
+    <resultMap id="BaseResultMap" type="com.scau.entity.CheckStat">
+        <id column="cs_id" property="cs_id" />
     </resultMap>
 
 
@@ -16,14 +16,14 @@
     <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
         select
         *
-        from salary
+        from checkstat
         <if test="start!=null and size!=null">
             limit #{start},#{size}
         </if>
     </select>
 
     <select id="findAll" resultMap="BaseResultMap">
-        select * from salary
+        select * from checkstat
     </select>
 
 

@@ -5,13 +5,10 @@
     namespace：必须与对应的接口全类名一致  EmployeeDao.java
     id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
  -->
-<mapper namespace="com.scau.dao.SalaryDao">
+<mapper namespace="com.scau.dao.AllowanceDao">
 
-    <resultMap id="BaseResultMap" type="com.scau.entity.Salary">
-        <id column="id" property="id" />
-        <result column="e_id" property="e_id" />
-        <result column="cs_id" property="cs_id" />
-        <result column="sum"  property="sum" />
+    <resultMap id="BaseResultMap" type="com.scau.entity.Allowance">
+        <id column="al_id" property="al_id" />
     </resultMap>
 
 
