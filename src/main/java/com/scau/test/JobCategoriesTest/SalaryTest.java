@@ -1,9 +1,8 @@
 package com.scau.test.JobCategoriesTest;
 
-import com.scau.dao.EmployeeDao;
+
 import com.scau.dao.SalaryDao;
-import com.scau.entity.Employee;
-import com.scau.entity.Salary;
+import com.scau.entity.*;
 import com.scau.test.BaseTest;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -34,5 +33,11 @@ public class SalaryTest extends BaseTest{
         List<Salary> employee = salaryDao.findAll();
         System.out.println(employee.size());
         System.out.println(employee.get(0).toString());
+    }
+
+    @Test
+    public void getAllSalary() {
+//        List<EmployeeSalary> list = salaryDao.getAllSalary();
+//        System.out.println(list.get(0).toString());
     }
 }
