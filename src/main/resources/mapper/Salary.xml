@@ -14,6 +14,17 @@
         <result column="sum"  property="sum" />
     </resultMap>
 
+    <resultMap id="myDefinedMap" type="com.scau.entity.EmployeeSalary">
+        <id column="id" property="salary.id" />
+        <result column="e_name"  property="employee.e_name" />
+        <result column="sums"  property="salary.sum" />
+        <result column="dept"  property="jobCategories.dept" />
+        <result column="years"  property="checkStat.year" />
+        <result column="months"  property="checkStat.month" />
+        <result column="j_id"  property="jobCategories.j_id" />
+    </resultMap>
+
+
 
     <!-- 查询所有ByPage -->
     <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
@@ -29,5 +40,12 @@
         select * from salary
     </select>
 
-
+    <select id="getAllSalary" resultMap="myDefinedMap">
+        select salary.sum sums,jobcategories.dept dept, employee.e_name e_name, salary.id id, checkstat.year years, checkstat.month months,
+        jobcategories.j_id j_id
+         from salary natural join checkstat natural join employee natural join emp_jobc natural join jobcategories
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
 </mapper>

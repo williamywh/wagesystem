@@ -33,11 +33,11 @@
 	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
  		        {field:'id',title:'ID',width:50, sortable: true},    
- 		        {field:'name',title:'姓名',width:200},
- 		        {field:'sum',title:'月工资',width:100},
+ 		        {field:'e_name',title:'姓名',width:200},
+ 		        {field:'sums',title:'月工资',width:100},
 				{field:'dept',title:'部门',width:100},
-                {field:'year',title:'年份',width:100},
-                {field:'month',title:'月份',width:100}
+                {field:'years',title:'年份',width:100},
+                {field:'months',title:'月份',width:100}
 	 		]], 
 	        toolbar: "#toolbar"
 	    });

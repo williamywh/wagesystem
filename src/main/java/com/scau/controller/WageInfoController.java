@@ -24,7 +24,7 @@ public class WageInfoController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private EmployeeService employeeService;
+    private SalaryService salaryService;
 
 
     @RequestMapping(value = "/showWageInfo")
@@ -35,13 +35,14 @@ public class WageInfoController {
     @RequestMapping(value = "/salaryList", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     @ResponseBody
     private String salaryList(HttpServletRequest request, HttpServletResponse response,Model model) throws ServletException, IOException {
+        System.out.println("-----------------");
         int page = Integer.parseInt(request.getParameter("page"));
         int rows = Integer.parseInt(request.getParameter("rows"));
         Map<String,Integer> map = new HashMap<String,Integer>();
         Page pageDomain = new Page(page,rows);
         map.put("start",pageDomain.getStart());
         map.put("size",pageDomain.getSize());
-        String result = employeeService.findAllByPage(map);
+        String result = salaryService.getAllSalary(map);
         System.out.println("result="+result);
         return result;
     }
