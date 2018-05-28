@@ -1,4 +1,6 @@
 package com.scau.test.Check_allowTest;
 
-public class Check_allowDaoTest {
+import com.scau.test.BaseTest;
+
+public class Check_allowDaoTest extends BaseTest {
 }
