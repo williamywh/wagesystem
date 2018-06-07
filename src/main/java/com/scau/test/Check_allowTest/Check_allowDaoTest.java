@@ -33,4 +33,6 @@ public class Check_allowDaoTest extends BaseTest {
         System.out.println(list.size());
         System.out.println(list.get(0).toString());
     }
+
+
 }

@@ -21,11 +21,30 @@ public class JobCategoriesServiceImpl implements JobCategoriesService{
     private JobCategoriesDao jobCategoriesDao;
 
     @Override
+    public List<JobCategories> findAllDept() {
+        return jobCategoriesDao.findAllDept();
+
+    }
+
+
+
+    @Override
     public String findJobCategoriesDept() {
         List<JobCategories> list = jobCategoriesDao.findJobCategoriesDept();
         //Map<String,Object> jsonMap = new HashMap<String,Object>();
         JsonConfig config = new JsonConfig();
         config.setExcludes(new String[]{"classn","base_wage","title"});
+        //jsonMap.put("name",list);
+        String result = JSONArray.fromObject(list,config).toString();
+        return result;
+    }
+
+    @Override
+    public String findJobCategoriesClassn() {
+        List<JobCategories> list = jobCategoriesDao.findJobCategoriesClassn();
+        //Map<String,Object> jsonMap = new HashMap<String,Object>();
+        JsonConfig config = new JsonConfig();
+        config.setExcludes(new String[]{"dept","base_wage","title"});
         //jsonMap.put("name",list);
         String result = JSONArray.fromObject(list,config).toString();
         return result;

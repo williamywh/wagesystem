@@ -9,8 +9,26 @@
 
     <resultMap id="BaseResultMap" type="com.scau.entity.CheckStat">
         <id column="cs_id" property="cs_id" />
+        <result column="e_id" jdbcType="INTEGER" property="e_id" />
+        <result column="ot_days" jdbcType="DECIMAL" property="ot_days" />
+        <result column="absent_days" jdbcType="DECIMAL" property="absent_days" />
+        <result column="leave_days" jdbcType="DECIMAL" property="leave_days" />
+        <result column="year" jdbcType="DECIMAL" property="year" />
+        <result column="month" jdbcType="DECIMAL" property="month" />
+        <result column="work_days" jdbcType="DECIMAL" property="work_days" />
     </resultMap>
 
+    <resultMap id="myDesigndMap" type="com.scau.entity.EmployeeAttend">
+        <id column="cs_id" property="cs_id" />
+        <result column="e_id"  property="e_id" />
+        <result column="e_name"  property="e_name" />
+        <result column="ot_days"  property="ot_days" />
+        <result column="absent_days"  property="absent_days" />
+        <result column="leave_days"  property="leave_days" />
+        <result column="year"  property="year" />
+        <result column="month"  property="month" />
+        <result column="work_days"  property="work_days" />
+    </resultMap>
 
     <!-- 查询所有ByPage -->
     <select id="findAllByPage" parameterType="Map" resultMap="BaseResultMap">
@@ -22,9 +40,44 @@
         </if>
     </select>
 
-    <select id="findAll" resultMap="BaseResultMap">
-        select * from checkstat
+    <select id="findAll" resultMap="myDesigndMap">
+        select checkstat.cs_id cs_id,checkstat.e_id e_id,employee.e_name e_name,
+        checkstat.ot_days ot_days,checkstat.absent_days absent_days,checkstat.leave_days leave_days,
+        checkstat.year year,checkstat.month month,checkstat.work_days work_days
+        from checkstat natural join employee
+        where checkstat.year=#{year} and employee.e_name=#{name}
+        order by checkstat.month
     </select>
 
+    <select id="getCheckstatNum" resultType="Integer">
+        select
+        count(*)
+        from checkstat
+    </select>
+
+    <select id="getAllAttendance" resultMap="myDesigndMap">
+        select checkstat.cs_id cs_id,checkstat.e_id e_id,employee.e_name e_name,
+        checkstat.ot_days ot_days,checkstat.absent_days absent_days,checkstat.leave_days leave_days,
+        checkstat.year year,checkstat.month month,checkstat.work_days work_days
+        from checkstat natural join employee
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <update id="updateAttendanceByName" parameterType="com.scau.entity.CheckStat">
+        update checkstat
+        set ot_days=#{ot_days},absent_days=#{absent_days},leave_days=#{leave_days},work_days=#{work_days}
+        where e_id=#{e_id} and month=#{month} and year=#{year}
+    </update>
+
+    <select id="findAllByName" resultMap="myDesigndMap">
+        select checkstat.cs_id cs_id,checkstat.e_id e_id,employee.e_name e_name,
+        checkstat.ot_days ot_days,checkstat.absent_days absent_days,checkstat.leave_days leave_days,
+        checkstat.year year,checkstat.month month,checkstat.work_days work_days
+        from checkstat natural join employee
+        where checkstat.year=#{year} and employee.e_name=#{name}
+        order by checkstat.month
+    </select>
 
 </mapper>

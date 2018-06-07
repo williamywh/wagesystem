@@ -1,27 +1,15 @@
 package com.scau.entity;
 
-public class CheckStat {
+public class EmployeeAttend {
     private int cs_id;
     private int e_id;
+    private String e_name;
     private int ot_days;
     private int absent_days;
     private int leave_days;
     private int year;
     private int month;
     private int work_days;
-
-    public CheckStat() {
-    }
-
-    public CheckStat(int e_id, int ot_days, int absent_days, int leave_days, int year, int month, int work_days) {
-        this.e_id = e_id;
-        this.ot_days = ot_days;
-        this.absent_days = absent_days;
-        this.leave_days = leave_days;
-        this.year = year;
-        this.month = month;
-        this.work_days = work_days;
-    }
 
     public int getCs_id() {
         return cs_id;
@@ -37,6 +25,14 @@ public class CheckStat {
 
     public void setE_id(int e_id) {
         this.e_id = e_id;
+    }
+
+    public String getE_name() {
+        return e_name;
+    }
+
+    public void setE_name(String e_name) {
+        this.e_name = e_name;
     }
 
     public int getOt_days() {
@@ -89,9 +85,10 @@ public class CheckStat {
 
     @Override
     public String toString() {
-        return "CheckStatService{" +
+        return "EmployeeAttend{" +
                 "cs_id=" + cs_id +
                 ", e_id=" + e_id +
+                ", e_name=" + e_name +
                 ", ot_days=" + ot_days +
                 ", absent_days=" + absent_days +
                 ", leave_days=" + leave_days +

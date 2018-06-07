@@ -5,5 +5,7 @@ import java.util.*;
 
 public interface JobCategoriesService {
     String findJobCategoriesDept();
+    String findJobCategoriesClassn();
+    List<JobCategories> findAllDept();
     void insertJobCategories(JobCategories jobCategories);
 }

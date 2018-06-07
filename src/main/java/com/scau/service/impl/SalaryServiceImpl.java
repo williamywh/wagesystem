@@ -35,7 +35,7 @@ public class SalaryServiceImpl implements SalaryService {
     public String getAllSalary(Map<String,Integer> map) {
         System.out.println("--------service------------");
         List<EmployeeSalary> list = salaryDao.getAllSalary(map);
-        System.out.println(list.get(0).toString());
+        System.out.println("fdfd"+list.size());
         List<Map<String,Object>> listMap = new ArrayList<Map<String,Object>>();
         Map<String,Object> hashMap = new HashMap<>();
         for(EmployeeSalary a:list){
