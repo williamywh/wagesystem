@@ -50,4 +50,11 @@ public class EmployeeDaoTest extends BaseTest{
         employeeDao.insertEmployee(employee);
         System.out.println(employee.getE_id());
     }
+
+    @Test
+    public void findE_id(){
+        String name="张三";
+        int id=employeeDao.getE_id(name);
+        System.out.println(id);
+    }
 }

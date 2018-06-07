@@ -6,6 +6,8 @@ import com.scau.entity.Employee;
 import com.scau.entity.JobCategories;
 import com.scau.entity.Page;
 import com.scau.service.*;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -39,11 +42,34 @@ public class JobCategoriesController {
     @Autowired
     private Emp_jobcService emp_jobcService;
 
+    @RequestMapping(value = "/deptList")
+    private String deptList(Model model) {
+        return "other/dept";
+    }
+
+    @RequestMapping(value = "/allDept", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    private String allDept(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
+        List<JobCategories> result = jobCategoriesService.findAllDept();
+        JsonConfig config = new JsonConfig();
+        String result1 = JSONArray.fromObject(result,config).toString();
+        System.out.println("result1="+result1);
+        return result1;
+    }
+
     @RequestMapping(value = "/jobcategoriesDept", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     @ResponseBody
     private String DeptList(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
         String result = jobCategoriesService.findJobCategoriesDept();
-        System.out.println("result="+result);
+        System.out.println("DeptList="+result);
+        return result;
+    }
+
+    @RequestMapping(value = "/jobcategoriesClassn", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    private String ClassnList(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
+        String result = jobCategoriesService.findJobCategoriesClassn();
+        System.out.println("ClassnList="+result);
         return result;
     }
 
@@ -73,4 +99,28 @@ public class JobCategoriesController {
         }
     }
 
+    @RequestMapping(value = "/addDept", method = RequestMethod.POST)
+    @ResponseBody
+    private String addDept(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Enumeration<String> pNames = request.getParameterNames();
+        Map<String,String> map = new HashMap<String,String>();
+        while(pNames.hasMoreElements()){
+            String pName = pNames.nextElement();
+            String value = request.getParameter(pName);
+            map.put(pName,value);
+        }
+        System.out.println(map);
+        JobCategories jobCategories=new JobCategories();
+        jobCategories.setDept(map.get("name"));
+        jobCategories.setTitle("默认");
+        jobCategories.setBase_wage(0);
+        jobCategories.setClassn("默认");
+        try{
+            jobCategoriesService.insertJobCategories(jobCategories);
+            return "success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
 }

@@ -14,4 +14,5 @@ public interface EmployeeDao {
     List<Employee> findAllByPage(Map<String,Integer> map);
     Employee findEmployeeByName(String e_name);
     Integer getEmployeeNum();
+    int getE_id(String name);
 }

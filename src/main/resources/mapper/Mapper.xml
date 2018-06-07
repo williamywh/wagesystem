@@ -58,4 +58,8 @@
         count(*)
         from employee
     </select>
+
+    <select id="getE_id" parameterType="String" resultType="int">
+        select e_id from employee where e_name= #{ name }
+    </select>
 </mapper>

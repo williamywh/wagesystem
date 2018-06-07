@@ -9,6 +9,7 @@
 
     <resultMap id="BaseResultMap" type="com.scau.entity.JobCategories">
         <id column="j_id" property="j_id" />
+        <id column="base_wage" property="base_wage" />
     </resultMap>
 
     <!-- 新增 -->
@@ -22,5 +23,17 @@
         select
         *
         from jobcategories group by dept;
+    </select>
+
+    <select id="findJobCategoriesClassn" resultMap="BaseResultMap">
+        select
+        *
+        from jobcategories group by classn;
+    </select>
+
+    <select id="findAllDept" resultMap="BaseResultMap">
+        select
+        *
+        from jobcategories;
     </select>
 </mapper>

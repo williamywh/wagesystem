@@ -27,12 +27,13 @@
 						},
 						{"menuid":"3","icon":"","menuname":"考勤管理",
 							"menus":[
-									{"menuid":"31","menuname":"考勤列表","icon":"icon-user-teacher","url":"TeacherServlet?method=toTeacherListView"},
+									{"menuid":"31","menuname":"考勤列表","icon":"icon-user-teacher","url":"/attendInfo/showList"},
+									{"menuid":"31","menuname":"考勤统计","icon":"icon-user-teacher","url":"/attendInfo/attendsenList"},
 								]
 						},
 						{"menuid":"4","icon":"","menuname":"基础信息管理",
 							"menus":[
-									{"menuid":"41","menuname":"部门列表","icon":"icon-world","url":"GradeServlet?method=toGradeListView"},
+									{"menuid":"41","menuname":"部门列表","icon":"icon-world","url":"/jobcategories/deptList"},
 								]
 						},
 						{"menuid":"5","icon":"","menuname":"系统管理",
