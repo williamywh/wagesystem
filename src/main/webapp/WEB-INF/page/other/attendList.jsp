@@ -16,7 +16,7 @@
 <body>
 
      <table id="tt" class="easyui-datagrid" style="width:700px;height:350px"
-			url="/attendInfo/statisticalList"
+			url="/wagesystem/attendInfo/statisticalList"
 			title="Searching" iconCls="icon-search" toolbar="#tb"
 			rownumbers="true" pagination="false">
 		<thead>

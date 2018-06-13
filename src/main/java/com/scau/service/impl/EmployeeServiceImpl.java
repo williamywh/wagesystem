@@ -57,8 +57,18 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee findEmployeeByName(String e_name) {
+    public List<Employee> findEmployeeByName(String e_name) {
         return employeeDao.findEmployeeByName(e_name);
+    }
+
+    @Override
+    public List<Employee> findEmployeeByNameAndDept(Map<String, String> map) {
+        return employeeDao.findEmployeeByNameAndDept(map);
+    }
+
+    @Override
+    public List<Employee> findEmployeeByDept(String dept) {
+        return employeeDao.findEmployeeByDept(dept);
     }
 
     @Override
@@ -66,5 +76,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         Integer number = employeeDao.getEmployeeNum();
         return number;
     }
+
 }
 

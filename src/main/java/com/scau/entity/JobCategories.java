@@ -1,6 +1,9 @@
 package com.scau.entity;
 
-public class JobCategories {
+import java.io.Serializable;
+
+public class JobCategories implements Serializable {
+    private static final long serialVersionUID = -3254173853274402680L;
     private Integer j_id;
     private String title;
     private String dept;

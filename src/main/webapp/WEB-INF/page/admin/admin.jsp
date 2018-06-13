@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Scau工资管理系统 管理员后台</title>
+    <title>Scau工资管理系统</title>
     <link rel="shortcut icon" href="favicon.ico"/>
 	<link rel="bookmark" href="favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../static/easyui/css/default.css" />
@@ -22,23 +22,18 @@
 						},
 						{"menuid":"2","icon":"","menuname":"工资详情管理",
 							"menus":[
-									{"menuid":"21","menuname":"员工工资信息","icon":"icon-user-student","url":"/WageInfo/showWageInfo"},
+									{"menuid":"21","menuname":"员工工资信息","icon":"icon-user-student","url":"/wagesystem/WageInfo/showWageInfo"},
 								]
 						},
 						{"menuid":"3","icon":"","menuname":"考勤管理",
 							"menus":[
-									{"menuid":"31","menuname":"考勤列表","icon":"icon-user-teacher","url":"/attendInfo/showList"},
-									{"menuid":"31","menuname":"考勤统计","icon":"icon-user-teacher","url":"/attendInfo/attendsenList"},
+									{"menuid":"31","menuname":"考勤列表","icon":"icon-user-teacher","url":"/wagesystem/attendInfo/showList"},
+									{"menuid":"31","menuname":"考勤统计","icon":"icon-user-teacher","url":"/wagesystem/attendInfo/attendsenList"},
 								]
 						},
 						{"menuid":"4","icon":"","menuname":"基础信息管理",
 							"menus":[
-									{"menuid":"41","menuname":"部门列表","icon":"icon-world","url":"/jobcategories/deptList"},
-								]
-						},
-						{"menuid":"5","icon":"","menuname":"系统管理",
-							"menus":[
-							        {"menuid":"51","menuname":"系统设置","icon":"icon-set","url":"SystemServlet?method=toAdminPersonalView"},
+									{"menuid":"41","menuname":"部门列表","icon":"icon-world","url":"/wagesystem/jobcategories/deptList"},
 								]
 						}
 				]};
@@ -57,7 +52,7 @@
     <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
         background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float:right; padding-right:20px;" class="head"><span style="color:red; font-weight:bold;">${user.name}&nbsp;</span>您好&nbsp;&nbsp;&nbsp;<a href="SystemServlet?method=LoginOut" id="loginOut">安全退出</a></span>
+        <%--<span style="float:right; padding-right:20px;" class="head"><span style="color:red; font-weight:bold;">${user.name}&nbsp;</span>您好&nbsp;&nbsp;&nbsp;<a href="SystemServlet?method=LoginOut" id="loginOut">安全退出</a></span>--%>
         <span style="padding-left:10px; font-size: 16px; ">SCAU工资管理系统</span>
     </div>
     <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">

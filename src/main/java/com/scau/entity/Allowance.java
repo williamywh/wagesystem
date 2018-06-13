@@ -1,8 +1,10 @@
 package com.scau.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Allowance {
+public class Allowance implements Serializable{
+    private static final long serialVersionUID = -1695973853274452039L;
     private int al_id;
     private String ot_type;
     private Date day;

@@ -25,9 +25,6 @@ public class JobCategoriesServiceImpl implements JobCategoriesService{
         return jobCategoriesDao.findAllDept();
 
     }
-
-
-
     @Override
     public String findJobCategoriesDept() {
         List<JobCategories> list = jobCategoriesDao.findJobCategoriesDept();

@@ -18,6 +18,6 @@ public class JobCategoriesServiceImplTest extends JobCategoriesDaoTest{
     @Test
     public void findEmployeeByName1(){
         String list = jobCategoriesService.findJobCategoriesDept();
-        System.out.println(list.toString());
+//        System.out.println(list.toString());
     }
 }

@@ -20,13 +20,13 @@ public class JobCategoriesDaoTest extends BaseTest {
     @Test
     public void findJobCategoriesDept() {
         List<JobCategories> list = jobCategoriesDao.findJobCategoriesDept();
-        System.out.println(list.toString());
+//        System.out.println(list.toString());
     }
 
     @Test
     public void insertJobCategories() {
         JobCategories jobCategories = new JobCategories("默認","財務部",50000,"财务部长");
         jobCategoriesDao.insertJobCategories(jobCategories);
-        System.out.println(jobCategories.getJ_id());
+//        System.out.println(jobCategories.getJ_id());
     }
 }

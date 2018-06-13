@@ -1,6 +1,9 @@
 package com.scau.entity;
 
-public class Page {
+import java.io.Serializable;
+
+public class Page implements Serializable {
+    private static final long serialVersionUID = -1695973853274523600L;
     private int start;
     private int code;
     private int size;  //

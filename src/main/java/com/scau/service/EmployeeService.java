@@ -10,6 +10,8 @@ public interface EmployeeService {
     Employee findEmployeeById(int e_id);
     List<Employee> findAll();
     String findAllByPage(Map<String,Integer> map);
-    Employee findEmployeeByName(String e_name);
+    List<Employee> findEmployeeByName(String e_name);
+    List<Employee> findEmployeeByNameAndDept(Map<String,String> map);
+    List<Employee> findEmployeeByDept(String dept);
     Integer getEmployeeNum();
 }

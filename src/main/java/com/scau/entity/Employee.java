@@ -1,9 +1,11 @@
 package com.scau.entity;
 
 //import java.util.Date;
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = -1695973853274402680L;
     private Integer e_id; //e_id
     private String e_name; //e_name
     private String gender;

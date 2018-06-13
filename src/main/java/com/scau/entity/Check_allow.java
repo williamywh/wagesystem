@@ -1,6 +1,9 @@
 package com.scau.entity;
 
-public class Check_allow {
+import java.io.Serializable;
+
+public class Check_allow implements Serializable{
+    private static final long serialVersionUID = -1695584623274402680L;
     private int ca_id;
     private int cs_id;
     private int al_id;

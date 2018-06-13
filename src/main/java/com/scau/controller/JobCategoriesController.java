@@ -53,7 +53,7 @@ public class JobCategoriesController {
         List<JobCategories> result = jobCategoriesService.findAllDept();
         JsonConfig config = new JsonConfig();
         String result1 = JSONArray.fromObject(result,config).toString();
-        System.out.println("result1="+result1);
+//        System.out.println("result1="+result1);
         return result1;
     }
 
@@ -61,7 +61,7 @@ public class JobCategoriesController {
     @ResponseBody
     private String DeptList(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
         String result = jobCategoriesService.findJobCategoriesDept();
-        System.out.println("DeptList="+result);
+//        System.out.println("DeptList="+result);
         return result;
     }
 
@@ -69,7 +69,7 @@ public class JobCategoriesController {
     @ResponseBody
     private String ClassnList(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
         String result = jobCategoriesService.findJobCategoriesClassn();
-        System.out.println("ClassnList="+result);
+//        System.out.println("ClassnList="+result);
         return result;
     }
 
@@ -83,7 +83,7 @@ public class JobCategoriesController {
             String value = request.getParameter(pName);
             map.put(pName,value);
         }
-        System.out.println(map);
+//        System.out.println("addEmployee"+map);
         Employee employee = new Employee(map.get("e_name"),map.get("gender"),map.get("tel"),map.get("address"),"111111",
                                             "",java.sql.Date.valueOf(map.get("datetime")));
         JobCategories jobCategories = new JobCategories(map.get("title"),map.get("dept"),Integer.parseInt(map.get("base_wage")),map.get("classn"));
@@ -109,7 +109,7 @@ public class JobCategoriesController {
             String value = request.getParameter(pName);
             map.put(pName,value);
         }
-        System.out.println(map);
+//        System.out.println(map);
         JobCategories jobCategories=new JobCategories();
         jobCategories.setDept(map.get("name"));
         jobCategories.setTitle("默认");

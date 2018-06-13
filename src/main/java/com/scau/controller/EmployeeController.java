@@ -29,7 +29,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     private String admin(Model model) {
         return "admin/admin";
     }
@@ -49,22 +49,7 @@ public class EmployeeController {
             String value = request.getParameter(pName);
             map1.put(pName,value);
         }
-        if(map1.get("e_name")!=null){
-            String name= map1.get("e_name");
-            Employee employee=employeeService.findEmployeeByName(name);
-            if(employee!=null) {
-                List<Employee> employees = new LinkedList<>();
-                employees.add(employee);
-                Map<String, Object> jsonMap = new HashMap<String, Object>();
-                jsonMap.put("total", 1);
-                jsonMap.put("rows", employees);
-                JsonConfig jsonConfig = new JsonConfig();
-                jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new SQLDateProcessor());
-                String result1 = JSONObject.fromObject(jsonMap, jsonConfig).toString();
-                System.out.println(result1);
-                return result1;
-            }else return "success";
-        }else {
+        if((map1.get("e_name")==null&&map1.get("department")==null) || (map1.get("e_name")==""&& (map1.get("department").equals("不限")||map1.get("department")==""))){
             int page = Integer.parseInt(request.getParameter("page"));
             int rows = Integer.parseInt(request.getParameter("rows"));
             String gradeid = request.getParameter("gradeid");
@@ -75,8 +60,42 @@ public class EmployeeController {
             map.put("start", pageDomain.getStart());
             map.put("size", pageDomain.getSize());
             String result = employeeService.findAllByPage(map);
-            System.out.println("result=" + result);
+//            System.out.println("result=" + result);
             return result;
+        }else {
+            String name= map1.get("e_name");
+            String department = map1.get("department");
+            List<Employee> employees = null;
+            if(department.equals("不限")){
+                employees=employeeService.findEmployeeByName(name);
+            }else if(name==""){
+                employees=employeeService.findEmployeeByDept(department);
+            }
+            else{
+                Map<String,String> mapp = new HashMap<String, String>();
+                mapp.put("e_name",name);
+                mapp.put("dept",department);
+                employees=employeeService.findEmployeeByNameAndDept(mapp);
+            }
+            if(employees.size()!=0) {
+                Map<String, Object> jsonMap = new HashMap<String, Object>();
+                jsonMap.put("total", 1);
+                jsonMap.put("rows", employees);
+                JsonConfig jsonConfig = new JsonConfig();
+                jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new SQLDateProcessor());
+                String result1 = JSONObject.fromObject(jsonMap, jsonConfig).toString();
+//                System.out.println(result1);
+                return result1;
+            }else {
+                Map<String, Object> jsonMap = new HashMap<String, Object>();
+                jsonMap.put("total", 0);
+                jsonMap.put("rows", 0);
+                JsonConfig jsonConfig = new JsonConfig();
+                jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new SQLDateProcessor());
+                String result1 = JSONObject.fromObject(jsonMap, jsonConfig).toString();
+                //System.out.println(result1);
+                return result1;
+            }
         }
     }
 
