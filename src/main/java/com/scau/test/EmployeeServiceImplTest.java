@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class EmployeeServiceImplTest extends EmployeeDaoTest{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -15,7 +17,9 @@ public class EmployeeServiceImplTest extends EmployeeDaoTest{
 
     @Test
     public void findEmployeeByName1(){
-        Employee employee = employeeService.findEmployeeByName("张三");
-        System.out.printf(employee.toString());
+        List<Employee> employee = employeeService.findEmployeeByName("张三");
+//        System.out.printf(employee.toString());
     }
+
+
 }

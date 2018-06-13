@@ -20,8 +20,7 @@
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
 	        method: "post",
-	        //url:"ClazzServlet?method=ClazzDetailList&t="+new Date().getTime(),
-	        url:"/jobcategories/allDept",
+	        url:"/wagesystem/jobcategories/allDept",
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
 	        pagination: true,//分页控件 
@@ -108,7 +107,7 @@
 						} else{
 							$.ajax({
 								type: "post",
-								url: "/jobcategories/addDept",
+								url: "/wagesystem/jobcategories/addDept",
 								data: $("#addForm").serialize(),
 								success: function(msg){
 									if(msg == "success"){

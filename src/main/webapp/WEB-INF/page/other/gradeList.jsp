@@ -21,7 +21,7 @@
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
 	        method: "get",
-            url:"/WageInfo/salaryList",
+            url:"/wagesystem/WageInfo/salaryList",
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
 	        pagination: true,//分页控件

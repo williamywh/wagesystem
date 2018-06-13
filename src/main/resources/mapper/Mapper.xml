@@ -7,6 +7,10 @@
  -->
 <mapper namespace="com.scau.dao.EmployeeDao">
 
+    <!-- 缓存类配置 -->
+    <!--<cache type="com.scau.util.redis.RedisCache" />-->
+    <cache eviction="LRU" type="com.scau.util.redis.RedisCache" />
+
     <resultMap id="BaseResultMap" type="com.scau.entity.Employee">
         <id column="e_id" property="e_id" />
         <result column="e_name" jdbcType="VARCHAR" property="e_name" />
@@ -34,8 +38,16 @@
     </select>
 
     <!-- 根据name查找单个用户  -->
-    <select id="findEmployeeByName" parameterType="String" resultMap="BaseResultMap">
+    <select id="findEmployeeByName" parameterType="String" resultMap="BaseResultMap" useCache="false">
         select * from employee where e_name = #{0}
+    </select>
+
+    <select id="findEmployeeByNameAndDept" parameterType="Map" resultMap="BaseResultMap" useCache="false">
+        select employee.* from employee natural join emp_jobc natural join jobcategories where e_name = #{e_name} and dept= #{dept};
+    </select>
+
+    <select id="findEmployeeByDept" parameterType="String" resultMap="BaseResultMap" useCache="false">
+        select employee.* from employee natural join emp_jobc natural join jobcategories where dept= #{0};
     </select>
 
     <!-- 查询所有 -->
@@ -59,7 +71,7 @@
         from employee
     </select>
 
-    <select id="getE_id" parameterType="String" resultType="int">
+    <select id="getE_id" parameterType="String" resultType="int" useCache="false">
         select e_id from employee where e_name= #{ name }
     </select>
 </mapper>

@@ -21,7 +21,7 @@
             collapsible: false,//是否可折叠的
             fit: true,//自动大小
             method: "get",
-            url:"/attendInfo/attendList",
+            url:"/wagesystem/attendInfo/attendList",
             idField:'id',
             singleSelect: true,//是否单选
             pagination: true,//分页控件
@@ -89,8 +89,7 @@
 
 							$.ajax({
 								type: "post",
-								// url: "CourseServlet?method=AddCourse",
-								url: "/attendInfo/addAttend",
+								url: "/wagesystem/attendInfo/addAttend",
 								data: $("#addForm").serialize(),
 								async: false,
 								success: function(msg){

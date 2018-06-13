@@ -13,13 +13,14 @@
 	<script type="text/javascript" src="../static/easyui/themes/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript">
 	function doSearch(){
-        			$('#dataList').datagrid('load',{
-        				e_name: $('#e_name').val()
-       			});
-        		}
+        // alert($('#add_gradeList1').combobox('getText'));
+        $('#dataList').datagrid('load',{
+		department: $('#add_gradeList1').combobox('getText'),
+        e_name: $('#e_name').val()
+        });
+    }
 	$(function() {	
-		//datagrid初始化 
-
+		//datagrid初始化
 	    //设置分页控件 
 	    var p = $('#dataList').datagrid('getPager'); 
 	    $(p).pagination({ 
@@ -118,8 +119,7 @@
 							var gradeid = $("#add_gradeList").combobox("getText");
 							$.ajax({
 								type: "post",
-								// url: "ExamServlet?method=AddExam&t="+new Date().getTime(),
-								url: "/jobcategories/addEmployee",
+								url: "/wagesystem/jobcategories/addEmployee",
 								data: $("#addForm").serialize(),
 								async: false,
 								success: function(msg){
@@ -220,7 +220,7 @@
 	  		editable: false, //不可编辑
 	  		method: "post",
 	  		// url: "GradeServlet?method=GradeList&t="+new Date().getTime(),
-	  		url: "/jobcategories/jobcategoriesDept",
+	  		url: "/wagesystem/jobcategories/jobcategoriesDept",
 			onLoadSuccess: function(){
 				//默认选择第一条数据
 				var data = $(this).combobox("getData");
@@ -233,14 +233,20 @@
 	  	$("#add_gradeList1").combobox({
         	  		width: "200",
         	  		height: "30",
-        	  		valueField: "j_id", //valueField: "id",
+        	  		valueField: "j_id",
         	  		textField: "dept",
         	  		multiple: false, //不可多选
         	  		editable: false, //不可编辑
         	  		method: "post",
-        	  		url: "/jobcategories/jobcategoriesDept",
+        	  		url: "/wagesystem/jobcategories/jobcategoriesDept",
         			onLoadSuccess: function(){
-        	  		}
+        	  		},
+            onSelect:function(){
+                //$('#dataList').datagrid('reload',{
+                //    department: $('#add_gradeList1').combobox('getText')
+                //});
+				//alert($('#add_gradeList1').combobox('getText'));
+			}
 
             });
 	  	
@@ -252,8 +258,7 @@
 	  		multiple: false, //不可多选
 	  		editable: false, //不可编辑
 	  		method: "post",
-	  		// url: "GradeServlet?method=GradeList&t="+new Date().getTime(),
-	  		url: "/jobcategories/jobcategoriesClassn",
+	  		url: "/wagesystem/jobcategories/jobcategoriesClassn",
 			onLoadSuccess: function(){
 				//默认选择第一条数据
 				var data = $(this).combobox("getData");
@@ -343,7 +348,7 @@
                 url="employeeInfoStart"
                 fit="true"
                 collapsible="false"
-                title="Searfching" toolbar="#toolbar"
+                title="员工基本信息" toolbar="#toolbar"
                 rownumbers="true" pagination="true">
         <thead>
 			<tr>

@@ -1,6 +1,9 @@
 package com.scau.entity;
 
-public class CheckStat {
+import java.io.Serializable;
+
+public class CheckStat implements Serializable {
+    private static final long serialVersionUID = -1695973002544402680L;
     private int cs_id;
     private int e_id;
     private int ot_days;

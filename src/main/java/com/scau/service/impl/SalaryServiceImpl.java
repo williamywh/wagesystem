@@ -33,9 +33,9 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public String getAllSalary(Map<String,Integer> map) {
-        System.out.println("--------service------------");
+//        System.out.println("--------service------------");
         List<EmployeeSalary> list = salaryDao.getAllSalary(map);
-        System.out.println("fdfd"+list.size());
+//        System.out.println("***********************"+list.size());
         List<Map<String,Object>> listMap = new ArrayList<Map<String,Object>>();
         Map<String,Object> hashMap = new HashMap<>();
         for(EmployeeSalary a:list){
@@ -46,9 +46,11 @@ public class SalaryServiceImpl implements SalaryService {
             hashMap.put("years",a.getCheckStat().getYear());
             hashMap.put("months",a.getCheckStat().getMonth());
             listMap.add(hashMap);
-            hashMap = null;
+//            hashMap.clear();
+//            hashMap = null;
+            hashMap = new HashMap<>();
         }
-        System.out.println(listMap.toString());System.out.println(listMap);
+        //System.out.println(listMap.toString());System.out.println(listMap);
         Map<String, Object> jsonMap = new HashMap<String, Object>();
         jsonMap.put("total", list.size());
         jsonMap.put("rows", listMap);

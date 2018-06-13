@@ -35,9 +35,10 @@ public class WageInfoController {
     @RequestMapping(value = "/salaryList", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     @ResponseBody
     private String salaryList(HttpServletRequest request, HttpServletResponse response,Model model) throws ServletException, IOException {
-        System.out.println("-----------------");
+//        System.out.println("***************");
         int page = Integer.parseInt(request.getParameter("page"));
         int rows = Integer.parseInt(request.getParameter("rows"));
+//        System.out.println("page="+page+"rows="+rows);
         Map<String,Integer> map = new HashMap<String,Integer>();
         Page pageDomain = new Page(page,rows);
         map.put("start",pageDomain.getStart());
