@@ -9,7 +9,7 @@
 
     <!-- 缓存类配置 -->
     <!--<cache type="com.scau.util.redis.RedisCache" />-->
-    <cache eviction="LRU" type="com.scau.util.redis.RedisCache" />
+    <!--<cache eviction="LRU" type="com.scau.util.redis.RedisCache" />-->
 
     <resultMap id="BaseResultMap" type="com.scau.entity.Employee">
         <id column="e_id" property="e_id" />

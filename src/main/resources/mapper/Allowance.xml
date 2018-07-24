@@ -6,7 +6,7 @@
     id ：必须与对应接口的某个对应的方法名一致即必须要和Mapper.java接口中的方法同名。
  -->
 <mapper namespace="com.scau.dao.AllowanceDao">
-    <cache eviction="LRU" type="com.scau.util.redis.RedisCache" />
+    <!--<cache eviction="LRU" type="com.scau.util.redis.RedisCache" />-->
 
     <resultMap id="BaseResultMap" type="com.scau.entity.Allowance">
         <id column="al_id" property="al_id" />
